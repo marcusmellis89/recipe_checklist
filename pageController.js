@@ -35,10 +35,10 @@ angular.module('recipe_ingredients', [])
       });
 
     $scope.getIngredients = function(data) {
-      $('#ingredients').html('');
+      $('.ingredient-list').html('');
       console.log('data is: ' + data.ingredients)
       for(var i =0; i < data.ingredients.length; i++) {
-          $('#ingredients').append('<br>' + '<center>' + '<input type="checkbox" name="ingredient">' + data.ingredients[i] + '</center>' + '</br>');
+          $('.ingredient-list').append('<br>' + '<center>' + '<input type="checkbox" name="ingredient">' + data.ingredients[i] + '</center>' + '</br>');
         // }
       }
     }
