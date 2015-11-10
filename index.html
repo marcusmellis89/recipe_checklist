@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="yummly">
   <head>
     <link href='styles.css' rel='stylesheet'>
-    <script src='request-handler.js'></script>
-    <script src='pageController.js'></script>
-    <script src="/node_modules/jquery/jquery.min.js"></script>
-    <script src="/node_modules/underscore/underscore-min.js"></script>
-    <script src="/node_modules/angular/angular.min.js"></script>
   </head>
 
 <body>
-  <div class='box' id='recipes'>
-    <form id='searching'>
-    <input type='text' id='search' placeholder='Search for a recipe!'>
-    <button class='search-button' type='button'>Search</button>
+  <div class='box' id='recipes' ng-controller='LinksController'>
+    <form ng-submit='getLinks(recipeGet)'>
+      <input type='text' ng-model='recipeGet' placeholder='Search for a recipe!'>
+      {{ recipeGet }}
+      <input type='submit' id='submit' value='Submit'>
+<!--     <button ng-click='getLinks()'>Search</button> -->
   </form>
+
+  <div ng-repeat="recipe in recipes" ng-repeat="link in links">
+    <a href='http://yummly.com/recipe/{{link}}'>{{recipe}}</a>
+  </div>
   </div>
 
   <div class='box' id='ingredients'>
@@ -23,6 +24,13 @@
   </form>
   </div>
 
+  <script src="./node_modules/underscore/underscore-min.js"></script>
+  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js">     </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.js"></script>
+  <script src="./app.js"></script>
+  <script src='./request-handler.js'></script>
+  <script src='./pageController.js'></script>
 </body>
-
 </html>

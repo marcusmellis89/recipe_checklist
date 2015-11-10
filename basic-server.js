@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 //   res.send('')
 // })
 app.use(bodyParser.json());
-// app.use(express.static(__dirname));
+app.use(express.static(__dirname));
 
 
 var port = 8000; 

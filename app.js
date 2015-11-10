@@ -1,4 +1,4 @@
-angular.module('yummly', ['services', 'recipe_ingredients', 'ngRoute'])
+angular.module('yummly', ['services', 'recipe_ingredients', 'ngRoute', 'ngResource'])
 
 .config(function($routeProvider) {
   $routeProvider
