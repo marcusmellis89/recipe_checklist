@@ -5,19 +5,25 @@
   </head>
 
 <body>
-  <div class='box' id='recipes' ng-controller='LinksController'>
+  <div class='ingredients-recipes-box'>
+  <div id='recipes' ng-controller='LinksController'>
     <form id='searchForm' ng-submit='getLinks(recipeGet)'>
-      <input type='text' ng-model='recipeGet' placeholder='Search for a recipe!'>
-      <input type='submit' id='submit' value='Submit'>
+      <input class='recipe-search' type='text' ng-model='recipeGet' placeholder='Search for a recipe!'>
+      <input class='recipe-submit' type='submit' id='submit' value='Submit'>
     </form>
+    <div class='recipe-list' style='overflow:scroll; height:400px'>
     <div ng-repeat='data in repeatData'>
       <br><a href='http://yummly.com/recipe/{{data.links}}' target='_blank'>{{data.recipes}}</a>
       <button id='cook' ng-click='getIngredients(data)'>Cook!</button></br>
     </div>
   </div>
-
-  <div class='box' id='ingredients'>
   </div>
+
+  <div id='ingredients'>
+    <div class='ingredient-list' style='overflow:scroll; height400px'>
+    </div>
+  </div>
+</div>
 
   <script src="./node_modules/underscore/underscore-min.js"></script>
   <script src="./node_modules/jquery/dist/jquery.min.js"></script>

@@ -11,31 +11,7 @@ angular.module('services', [])
     })
   };
 
-  // var addRecipes = function () {
-  //   return $http({
-  //     method:'POST',
-  //     url: searchRecipe + data,
-  //     data: link
-  //   }).then(function(resp) {
-  //     return resp.data;
-  //   })
-
-  // var getIngredients = function () {
-  //   return $http({
-  //     method: 'GET',
-  //     url: ,
-  //   })
-
-  // }
-
-  // var addIngredients = function () {
-  //   return $http({
-  //     method: 'POST',
-  //     url: ,
-  //   })
-  // };
-
-return {
-  getRecipes: getRecipes
-}
+  return {
+    getRecipes: getRecipes
+  }
 })
