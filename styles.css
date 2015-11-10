@@ -1,0 +1,10 @@
+.box {
+  padding: 10px;
+  margin: 0 auto;
+  float:left;
+  display: inline-block;
+  width: 375px;
+  height: 500px;
+  border-style: groove;
+  border-width: 5px;
+}
