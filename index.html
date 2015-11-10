@@ -6,22 +6,17 @@
 
 <body>
   <div class='box' id='recipes' ng-controller='LinksController'>
-    <form ng-submit='getLinks(recipeGet)'>
+    <form id='searchForm' ng-submit='getLinks(recipeGet)'>
       <input type='text' ng-model='recipeGet' placeholder='Search for a recipe!'>
-      {{ recipeGet }}
       <input type='submit' id='submit' value='Submit'>
-<!--     <button ng-click='getLinks()'>Search</button> -->
-  </form>
-
-  <div ng-repeat="recipe in recipes" ng-repeat="link in links">
-    <a href='http://yummly.com/recipe/{{link}}'>{{recipe}}</a>
-  </div>
+    </form>
+    <div ng-repeat='data in repeatData'>
+      <br><a href='http://yummly.com/recipe/{{data.links}}' target='_blank'>{{data.recipes}}</a>
+      <button id='cook' ng-click='getIngredients(data)'>Cook!</button></br>
+    </div>
   </div>
 
   <div class='box' id='ingredients'>
-  <form>
-    <input type='checkbox' name='ingredient'>
-  </form>
   </div>
 
   <script src="./node_modules/underscore/underscore-min.js"></script>

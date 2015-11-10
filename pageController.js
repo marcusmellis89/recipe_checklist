@@ -1,30 +1,47 @@
 angular.module('recipe_ingredients', [])
 
 .controller('LinksController', function ($scope, Links) {
-  $scope.formData = {};
-  $scope.recipeGet = '';
-  $scope.recipes = [];
-  $scope.links = []
 
   $scope.getLinks = function(data) {
-    console.log('data is:' + data);
-    console.log('are you inside?')
-    // $scope.formData.
+  // $scope.recipeGet = '';
+  $scope.recipes = [];
+  $scope.links = [];
+  $scope.ingredients = [];
     Links.getRecipes(data)
       .success(function(data) {
         for(var i = 0; i < data.matches.length; i++) {
           if($scope.recipes.indexOf(data.matches[i].recipeName) === -1) {
           $scope.recipes.push(data.matches[i].recipeName);
-          console.log('scope recipes is currently:', $scope.recipes)
           }
         }
         for(var i =0; i < data.matches.length; i++) {
-          if($scope.recipes.indexOf(data.matches[i].id) ===-1) {
+          if($scope.links.indexOf(data.matches[i].id) ===-1) {
             $scope.links.push(data.matches[i].id);
           }
         }
-        console.log($scope.links);
+        for(var i=0; i < data.matches.length; i++) {
+          if($scope.ingredients.indexOf(data.matches[i].ingredients)=== -1) {
+            $scope.ingredients.push(data.matches[i].ingredients);
+          }
+        }        
+        $scope.repeatData = $scope.recipes.map(function(value, index) {
+          return {
+            recipes: value,
+            links: $scope.links[index],
+            ingredients: $scope.ingredients[index]
+          }
+        })
+      
       });
+
+    $scope.getIngredients = function(data) {
+      $('#ingredients').html('');
+      console.log('data is: ' + data.ingredients)
+      for(var i =0; i < data.ingredients.length; i++) {
+          $('#ingredients').append('<br>' + '<center>' + '<input type="checkbox" name="ingredient">' + data.ingredients[i] + '</center>' + '</br>');
+        // }
+      }
+    }
   }
 
   // $scope.addRecipes = function (array) {
