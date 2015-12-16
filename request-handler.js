@@ -1,5 +1,5 @@
-var APIKEY = '7f72361e4257e404e24102199fee2ef9';
-var APPID = '3672105a';
+var APIKEY = '74f79c67e773f3a1bb29ae4d2cecc50b';
+var APPID = 'd2272e81';
 var searchRecipe = 'http://api.yummly.com/v1/api/recipes?_app_id=' + APPID + '&_app_key=' + APIKEY + '&q=';
 angular.module('services', [])
 

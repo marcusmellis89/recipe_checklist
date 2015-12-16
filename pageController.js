@@ -2,11 +2,12 @@ angular.module('recipe_ingredients', [])
 
 .controller('LinksController', function ($scope, Links) {
 
+  $scope.savedRecipes = [];
   $scope.getLinks = function(data) {
-  // $scope.recipeGet = '';
   $scope.recipes = [];
   $scope.links = [];
   $scope.ingredients = [];
+  $scope.imgs = [];
     Links.getRecipes(data)
       .success(function(data) {
         for(var i = 0; i < data.matches.length; i++) {
@@ -23,12 +24,20 @@ angular.module('recipe_ingredients', [])
           if($scope.ingredients.indexOf(data.matches[i].ingredients)=== -1) {
             $scope.ingredients.push(data.matches[i].ingredients);
           }
-        }        
+        }  
+
+        for(var i=0; i < data.matches.length; i++) {
+          if($scope.ingredients.indexOf(data.matches[i].imageUrlsBySize) === -1) {
+            $scope.imgs.push(data.matches[i].imageUrlsBySize);
+          }
+        }      
         $scope.repeatData = $scope.recipes.map(function(value, index) {
           return {
             recipes: value,
             links: $scope.links[index],
-            ingredients: $scope.ingredients[index]
+            ingredients: $scope.ingredients[index],
+            img: $scope.imgs[index],
+            saved: $scope.savedRecipes[index]
           }
         })
       
@@ -42,10 +51,15 @@ angular.module('recipe_ingredients', [])
         // }
       }
     }
+
+    $scope.saveRecipes = function(data) {
+      console.log('data is :' + data['img'][90]);
+      var imgData = data['img'][90];
+      var imgUrl = data['links'];
+      $scope.savedRecipes.push({image:imgData, url:imgUrl});
+      // $('.saved-recipes').append('  <img class="pic" src=' + imgData + '>  ');
+    }
   }
 
-  // $scope.addRecipes = function (array) {
-
-  // }
   
 })
