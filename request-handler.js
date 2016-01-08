@@ -4,6 +4,7 @@ searchRecipe = 'http://api.yummly.com/v1/api/recipes?_app_id=' + APPID + '&_app_
 angular.module('services', [])
 
 .factory('Links', function($http) {
+	
   var getRecipes = function (data) {
     return $http({
       method:'GET',
@@ -11,7 +12,29 @@ angular.module('services', [])
     })
   };
 
+  var saveRecipes = function (data) {
+  	console.log('inside saveRecipes in factory and data is ', JSON.stringify(data));
+    return $http({
+      method:'POST',
+      // url: searchRecipe + data
+      url: '/saverecipe',
+      data: {info: data}
+
+    })
+  };
+
+  var retrieve = function () {
+    return $http({
+      method:'GET',
+      url: '/retrieve'
+    })
+  };
+
+
+
   return {
-    getRecipes: getRecipes
+    getRecipes: getRecipes,
+    saveRecipes: saveRecipes,
+    retrieve: retrieve
   }
 })
